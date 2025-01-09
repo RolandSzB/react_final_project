@@ -1,15 +1,29 @@
+import * as React from "react";
 import "./App.css";
 import HomePage from "./homepage";
 import Footer from "./footer/footerIndex";
-import { BrowserRouter, Route, Routes, Outlet } from "react-router-dom";
+import AboutUsPage from "./aboutUsPage";
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 
 function App() {
+  const LocationWrapper = () => {
+    const location = useLocation();
+    const showFooterPaths = ["/"];
+
+    return (
+      <>
+        <Routes>
+          <Route path={"/"} element={<HomePage />} />
+          <Route path={"/about"} element={<AboutUsPage />} />
+        </Routes>
+        {showFooterPaths.includes(location.pathname) && <Footer />}
+      </>
+    );
+  };
+
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path={"/"} element={<HomePage />} />
-      </Routes>
-      <Footer />
+      <LocationWrapper />
     </BrowserRouter>
   );
 }

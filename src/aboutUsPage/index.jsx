@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function AboutUsPage() {
   return (
     <div>
@@ -6,6 +8,9 @@ export default function AboutUsPage() {
         We are a company that values our customers and we strive to provide the
         best service possible.
       </p>
+      <button>
+        <Link to="/">Home</Link>
+      </button>
     </div>
   );
 }
