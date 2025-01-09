@@ -5,11 +5,11 @@ import aboutImage from "./about.png";
 
 export default function AboutUsPage() {
   return (
-    <div className="flex flex-col bg-teal-100">
+    <div className="flex flex-col bg-gradient-to-br from-gray-400 to-emerald-600">
       <h2 className="flex content-center justify-center font-bold text-5xl m-8">
         About Us
       </h2>
-      <p className="text-lg text-gray-500 text-center m-12">
+      <p className="text-lg text-gray-700 text-center m-12">
         More than only a price comparition site! We are here to help you in
         picking the best tech form your remote work, gaming or other activities.
         We want to help you, to be there for you, not only with the lowest price
