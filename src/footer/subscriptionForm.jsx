@@ -8,7 +8,7 @@ const ErrorMsg = ({ name }) => {
 };
 
 function SubscriptionForm() {
-  const handleSubmit = async (formData) => {
+  const handleSubmit = async (values, resetForm) => {
     try {
       const response = await fetch(
         "https://jsonplaceholder.typicode.com/users",
@@ -17,10 +17,11 @@ function SubscriptionForm() {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(formData),
+          body: JSON.stringify(values),
         }
       );
       const result = await response.json();
+      resetForm();
       console.log("Form submitted successfully:", result);
     } catch (error) {
       console.error("Error submitting form:", error);
@@ -35,6 +36,9 @@ function SubscriptionForm() {
     email: Yup.string().required("Email is required").email("Invalid email"),
     interest: Yup.string().required("Interest is required"),
   });
+  const handleReset = (resetForm) => {
+    resetForm();
+  };
 
   return (
     <div className="flex flex-col content-center px-96">
@@ -46,11 +50,11 @@ function SubscriptionForm() {
         arrivals, events and special offers.
       </div>
       <Formik
-        onSubmit={handleSubmit}
+        onSubmit={(values, { resetForm }) => handleSubmit(values, resetForm)}
         initialValues={initialValues}
         validationSchema={validationSchema}
       >
-        {() => (
+        {({ resetForm }) => (
           <Form>
             <label className="flex flex-col  px-40 ">
               Email:
@@ -58,14 +62,14 @@ function SubscriptionForm() {
                 type="text"
                 name="email"
                 placeholder="Enter your email"
-                className="bg-transparent border-2	border-black rounded-3xl p-3 placeholder-black hover:bg-green-400"
+                className="bg-transparent border-2	border-black rounded-3xl p-3 placeholder-black hover:bg-green-400 "
               />
               <ErrorMsg name={"email"} />
             </label>
 
             <br />
 
-            <label className="flex flex-row px-56 justify-between">
+            <label className="flex flex-row mx-56 justify-between">
               <div className="flex flex-col">
                 Interest:
                 <Field
@@ -82,7 +86,8 @@ function SubscriptionForm() {
 
               <button
                 type="submit"
-                className="bg-black text-white my-8 px-6 py-2 rounded-xl border-4 border-black  hover:bg-gray-700 "
+                className="bg-black text-white ms-8 my-8 px-6 py-2 rounded-xl border-4 border-black  hover:bg-gray-700 "
+                onClick={() => handleReset(resetForm)}
               >
                 Submit
               </button>
