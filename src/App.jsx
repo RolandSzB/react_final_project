@@ -1,5 +1,6 @@
 import * as React from "react";
 import "./App.css";
+import NavBar from "./navbar";
 import HomePage from "./homepage";
 import Footer from "./footer/footerIndex";
 import AboutUsPage from "./aboutUsPage";
@@ -8,13 +9,16 @@ import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 function App() {
   const LocationWrapper = () => {
     const location = useLocation();
-    const showFooterPaths = ["/"];
+    const showFooterPaths = ["/", "/laptops", "/tablets"];
 
     return (
       <>
+        <NavBar />
         <Routes>
           <Route path={"/"} element={<HomePage />} />
           <Route path={"/about"} element={<AboutUsPage />} />
+          <Route path={"/laptops"} element={<AboutUsPage />} />
+          <Route path={"/tablets"} element={<AboutUsPage />} />
         </Routes>
         {showFooterPaths.includes(location.pathname) && <Footer />}
       </>
