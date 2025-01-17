@@ -1,0 +1,31 @@
+{
+  "items": [
+    {
+      "name": "Laptop Pro 2025",
+      "image": "https://example.com/images/laptop-pro-2025.jpg",
+      "price": 1299.99,
+      "review": {
+        "rating": 4.8,
+        "count": 245
+      }
+    },
+    {
+      "name": "Tablet Max 10",
+      "image": "https://example.com/images/tablet-max-10.jpg",
+      "price": 699.99,
+      "review": {
+        "rating": 4.5,
+        "count": 180
+      }
+    },
+    {
+      "name": "UltraPhone X",
+      "image": "https://example.com/images/ultraphone-x.jpg",
+      "price": 999.99,
+      "review": {
+        "rating": 4.7,
+        "count": 320
+      }
+    }
+  ]
+}
