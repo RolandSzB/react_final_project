@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Breathe Effect: Slight Scaling */
+.icon-breathe {
+  transition: transform 0.3s ease-in-out; /* Smooth transition for scaling */
+}
+
+.icon-breathe:hover {
+  transform: scale(1.2); /* Scale icon to 1.2x its size */
+}
+
+/* Jump Effect: Vertical Movement */
+.icon-jump {
+  display: inline-block;
+  transition: transform 0.3s ease-in-out; /* Smooth transition for movement */
+}
+
+.icon-jump:hover {
+  transform: translateY(-10px); /* Move the icon upward */
+}

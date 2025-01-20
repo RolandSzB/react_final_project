@@ -18,22 +18,21 @@ export default function AboutUsPage() {
       <div className="flex flex-row justify-center">
         <div className=" flex flex-col ms-12 mt-4 p-8">
           <div className="flex flex-row mb-4">
-            <i className="bi bi-laptop text-4xl font-bold me-6 "></i>
+            <i className="bi bi-laptop text-4xl font-bold me-6 icon-breathe"></i>
             <p className="text-lg content-center">
               We offer a handpicked selection of the best tablets, laptops, and
               more to meet all your household and tech needs.
             </p>
           </div>
           <div className="flex flex-row mb-4">
-            <i className="bi bi-person-check-fill text-4xl font-bold me-6"></i>
+            <i className="bi bi-person-check-fill text-4xl font-bold me-6 icon-breathe"></i>
             <p className="text-lg content-center">
               The selection is made by real humans, without any use of AI
             </p>
           </div>
           <div className="flex flex-row">
-            <i className="bi bi-stars text-4xl font-bold me-6"></i>{" "}
+            <i className="bi bi-stars  text-4xl font-bold me-6 icon-breathe"></i>
             <p className="text-lg content-center">
-              {" "}
               10 years of experience in the tech industry
             </p>
           </div>
@@ -41,7 +40,7 @@ export default function AboutUsPage() {
             type="button"
             className="text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200  font-medium rounded-lg text-xl px-5 py-4 text-center mt-40 mx-64"
           >
-            <i className="bi bi-house me-2"></i>
+            <i className="bi bi-house me-2 icon-jump"></i>
             <Link to="/">Home</Link>
           </button>
         </div>
