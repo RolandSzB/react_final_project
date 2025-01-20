@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
-import "./laptops.css";
+import "./index.css";
 
 // Fetch laptops from DummyJSON API
 const fetchLaptops = async () => {

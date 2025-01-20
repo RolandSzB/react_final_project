@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import NavBar from "./navbar";
 import Laptops from "./pages/laptops";
+import Tablets from "./pages/tablets";
 import HomePage from "./homepage";
 import Footer from "./footer/footerIndex";
 import AboutUsPage from "./aboutUsPage";
@@ -24,7 +25,7 @@ function App() {
           <Route path={"/"} element={<HomePage />} />
           <Route path={"/about"} element={<AboutUsPage />} />
           <Route path={"/laptops"} element={<Laptops />} />
-          <Route path={"/tablets"} element={<AboutUsPage />} />
+          <Route path={"/tablets"} element={<Tablets />} />
         </Routes>
         {showFooterPaths.includes(location.pathname) && <Footer />}
       </>
