@@ -1,15 +1,21 @@
-import * as React from "react";
+import React from "react";
 import "./App.css";
 import NavBar from "./navbar";
+import Laptops from "./pages/laptops";
 import HomePage from "./homepage";
 import Footer from "./footer/footerIndex";
 import AboutUsPage from "./aboutUsPage";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "react-query";
+
+// Create a QueryClient instance
+const queryClient = new QueryClient();
 
 function App() {
+  // Wrapper to manage the location logic and render components
   const LocationWrapper = () => {
     const location = useLocation();
-    const showFooterPaths = ["/", "/laptops", "/tablets"];
+    const showFooterPaths = ["/", "/laptops", "/tablets"]; // Define routes that show the footer
 
     return (
       <>
@@ -17,7 +23,7 @@ function App() {
         <Routes>
           <Route path={"/"} element={<HomePage />} />
           <Route path={"/about"} element={<AboutUsPage />} />
-          <Route path={"/laptops"} element={<AboutUsPage />} />
+          <Route path={"/laptops"} element={<Laptops />} />
           <Route path={"/tablets"} element={<AboutUsPage />} />
         </Routes>
         {showFooterPaths.includes(location.pathname) && <Footer />}
@@ -26,9 +32,11 @@ function App() {
   };
 
   return (
-    <BrowserRouter>
-      <LocationWrapper />
-    </BrowserRouter>
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
+        <LocationWrapper />
+      </BrowserRouter>
+    </QueryClientProvider>
   );
 }
 
