@@ -17,6 +17,7 @@ const fetchLaptops = async () => {
 const Laptops = () => {
   const { data, error, isLoading } = useQuery("laptops", fetchLaptops);
   const [filter, setFilter] = useState("top-rated");
+  const [showComments, setShowComments] = useState({}); // State to track comment visibility
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
@@ -35,15 +36,19 @@ const Laptops = () => {
 
   const filteredLaptops = getFilteredLaptops();
 
+  const toggleComments = (id) => {
+    setShowComments((prev) => ({ ...prev, [id]: !prev[id] }));
+  };
+
   return (
     <div>
-      <div className="flex flex-row text-center justify-center ">
-        <h1 className="font-bold text-xl text-center  content-center">
+      <div className="flex flex-row text-center justify-center">
+        <h1 className="font-bold text-xl text-center content-center">
           Filter by:
         </h1>
         <button
           onClick={() => setFilter("top-rated")}
-          className="text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-6 py-2 text-center m-2 "
+          className="text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-6 py-2 text-center m-2"
         >
           <i className="bi bi-stars"></i> Best Rating
         </button>
@@ -55,22 +60,39 @@ const Laptops = () => {
         </button>
       </div>
 
-      <div className="flex flex-row flex-wrap justify-center mb-20 ">
+      <div className="flex flex-row flex-wrap justify-center mb-20">
         {filteredLaptops.map((product) => (
           <div key={product.id} className="w-64 h-auto">
             <img src={product.thumbnail} alt={product.title} />
 
-            <div className="text-center  content-center ">
+            <div className="text-center content-center">
               <h3 className="font-bold text-xl text-center mx-4 pb-3 hover:underline h-16">
                 {product.title}
               </h3>
               <p className="font-bold text-green-600 hover:text-red-600 h-8">
                 ${product.price}
               </p>
-              <div className=" hover:text-yellow-500 p-2">
-                <i className="bi bi-star-fill text-yellow-400 me-2 "></i>
+              <div
+                className="hover:text-yellow-500 p-2 cursor-pointer"
+                onClick={() => toggleComments(product.id)}
+              >
+                <i className="bi bi-star-fill text-yellow-400 me-2"></i>
                 {product.rating}
               </div>
+
+              {showComments[product.id] && product.reviews && (
+                <div className="text-left p-2 border-t mt-2">
+                  <h4 className="font-bold text-lg">Reviews:</h4>
+                  <ul>
+                    {product.reviews.map((review, index) => (
+                      <li key={index} className="text-sm text-gray-600">
+                        {review.comment}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
               <button
                 type="button"
                 className="text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-8 py-4 text-center me-2 mb-2"
