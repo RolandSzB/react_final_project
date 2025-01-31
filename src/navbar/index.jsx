@@ -16,6 +16,9 @@ export default function NavBar() {
         <Link to="/tablets" className="hover:text-blue-500 font-medium">
           Tablets
         </Link>
+        <Link to="/products" className="hover:text-blue-500 font-medium">
+          Search
+        </Link>
       </div>
     </div>
   );

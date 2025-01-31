@@ -3,6 +3,7 @@ import "./App.css";
 import NavBar from "./navbar";
 import Laptops from "./pages/laptops";
 import Tablets from "./pages/tablets";
+import Products from "./pages/products";
 import HomePage from "./homepage";
 import Footer from "./footer/footerIndex";
 import AboutUsPage from "./aboutUsPage";
@@ -26,6 +27,7 @@ function App() {
           <Route path={"/about"} element={<AboutUsPage />} />
           <Route path={"/laptops"} element={<Laptops />} />
           <Route path={"/tablets"} element={<Tablets />} />
+          <Route path={"/products"} element={<Products />} />
         </Routes>
         {showFooterPaths.includes(location.pathname) && <Footer />}
       </>
