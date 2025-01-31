@@ -98,9 +98,16 @@ const Products = () => {
                 alt={product.title}
                 className="w-full h-40 object-cover"
               />
-              <h3 className="font-bold text-lg mt-2">{product.title}</h3>
-              <p className="text-green-600 font-bold">${product.price}</p>
-              <p className="text-yellow-500">⭐ {product.rating}</p>
+              <h3 className="font-bold text-lg mt-2 h-14 hover:underline">
+                {product.title}
+              </h3>
+              <p className="text-green-600 font-bold h-8 hover:text-green-800">
+                ${product.price}
+              </p>
+              <p className="hover:text-yellow-500 hover:font-bold h-8">
+                <i className="bi bi-star-fill text-yellow-400"></i>
+                {product.rating}
+              </p>
               <a
                 href={`https://www.amazon.com/s?k=${product.title}`}
                 target="_blank"
